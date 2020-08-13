@@ -1,7 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
 
+import Search from "./Search";
+import "./styles.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function App() {
+  return (
+    <div className="App">
+      <Search />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
