@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const languages = ["JavaScript", "Python", "C", "Ruby", "Java", "PHP", "C#"];
-// Export an object containing methods we'll use for accessing the random user API
+// Exportiing an object containing methods we'll use for accessing the random user API
 export default {
   getUsersByLanguage: function(language) {
     return new Promise((resolve, reject) => {
