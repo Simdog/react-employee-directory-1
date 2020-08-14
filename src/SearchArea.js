@@ -1,12 +1,15 @@
 import React from "react";
-import App from "./App";
 
-const Header = () => {
-    return(
-        <header>
-            <h1> Employee Cards </h1>
-        </header>
+
+const SearchArea = (props) => {
+    return (
+        <div className="search-area">
+            <form action="">
+                <input onChange={props.handleSearch} type="text"/>
+                <button type="submit">Search Employee</button>
+            </form>
+        </div>
     )
 }
 
-export default Header;
+export default SearchArea;
