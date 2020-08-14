@@ -19,19 +19,25 @@ import countriesList from "./employees.json";
 
 class App extends Component {
   state = {
-    search: ""
+    search: "",
+    sortType: "asc",
+    countriesList : [...countriesList.map( country => { return { ...country, selected: false}})]
   };
 
   renderCountry = country => {
     const { search } = this.state;
+ 
     var code = country.code.toLowerCase();
 
     /*if( search !== "" && country.name.toLowerCase().indexOf( search.toLowerCase() ) === -1 ){
         return null
     }*/
 
+
+
     return (
       <div className="col-md-3" style={{ marginTop: "20px" }}>
+
         <Card>
           <CardBody>
             <p className="">
@@ -57,6 +63,11 @@ class App extends Component {
 
   render() {
     const { search } = this.state;
+       const { countriesList, sortType } = this.state;
+    const sorted = countriesList.sort((a, b)=>{
+      const isReverse = (sortType === "asc") ? 1 : -1;
+      return isReverse * a.name.localeCompare(b.name)
+    });
     const filteredCountries = countriesList.filter(country => {
       return country.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
@@ -67,16 +78,8 @@ class App extends Component {
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <center>
-                  <h3>
-                    <a
-                      href="https://www.youtube.com/watch?v=RM_nXOyHwN0"
-                      target="_blank"
-                    >
-                      Watch youtube demo here
-                    </a>
-                  </h3>
-                </center>
+                  <button  className="button" onClick={()=>this.onSort('asc')}>Sort By Asc </button>
+                  <button  className="button" onClick={()=>this.onSort('desc')}>Sort By Desc </button>
               </div>
               <div className="col">
                 <Input
@@ -86,11 +89,14 @@ class App extends Component {
                 />
               </div>
               <div className="col" />
-            </div>
-            <div className="row">
               {filteredCountries.map(country => {
                 return this.renderCountry(country);
               })}
+            </div>
+            <div className="row">
+              {sorted.map(country => {
+                return this.renderCountry(country);
+              })};
             </div>
           </div>
         </main>
