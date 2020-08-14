@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchArea from './SearchArea';
-
+import request from 'superagent';
 class Employees extends Component {
 
     constructor(props) {
@@ -11,6 +11,17 @@ class Employees extends Component {
         }
     }
 
+    //api stuff 
+    searchEmployee = (e) => {
+        e.preventDefault();
+        request
+        .get('https://randomuser.me/api/')
+        .query({ q: this.state.searchField})
+        .then((data)=>{
+            console.log(data);
+        })
+    }
+
     handleSearch = (e) => { //e refers to event 
         console.log(e.target.value)
         this.setState({ searchField: e.target.value })
@@ -19,7 +30,7 @@ class Employees extends Component {
   render() {
   return (
     <div>
-      <SearchArea handleSearch={this.handleSearch}/>
+      <SearchArea searchEmployee={this.searchEmployee} handleSearch={this.handleSearch}/>
     </div>
   );
 }
