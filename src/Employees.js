@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchArea from './SearchArea';
 import request from 'superagent';
+
 class Employees extends Component {
 
     constructor(props) {
@@ -19,6 +20,7 @@ class Employees extends Component {
         .query({ q: this.state.searchField})
         .then((data)=>{
             console.log(data);
+            this.setState({employees:[...data.body.results] })
         })
     }
 
@@ -31,6 +33,7 @@ class Employees extends Component {
   return (
     <div>
       <SearchArea searchEmployee={this.searchEmployee} handleSearch={this.handleSearch}/>
+      {/* <EmployeeList employees={this.state.books} /> */}
     </div>
   );
 }
