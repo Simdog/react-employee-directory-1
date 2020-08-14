@@ -1,17 +1,19 @@
 import React from "react";
-import EmployeeCard from './EmployeeCard'
+import EmployeeCard from './EmployeeCard';
 
 
-const EmployeeList = (props) => {
+const EmployeeList = (props) => { //rendering the data from the api 
     return(
         <div className="list">
             {
                 props.employees.map((employee, i)=>{
                     return <EmployeeCard 
-                    image={employee.picture.thumbnail}
-                    name={employee.name}
-                    gender={employee.gender}
-                    email={employee.email}
+                     key={i} 
+                     image={employee.picture.thumbnail}
+                      firstName={employee.name.first}
+                      lastName={employee.name.last}
+                     gender={employee.gender}
+                     location={employee.location.city}
                     />
                 })
             }

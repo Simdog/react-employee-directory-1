@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchArea from './SearchArea';
 import request from 'superagent';
+import EmployeeList from './EmployeeList';
 
 class Employees extends Component {
 
@@ -16,7 +17,7 @@ class Employees extends Component {
     searchEmployee = (e) => {
         e.preventDefault();
         request
-        .get('https://randomuser.me/api/')
+        .get('https://randomuser.me/api/?results=10')
         .query({ q: this.state.searchField})
         .then((data)=>{
             console.log(data);
@@ -33,7 +34,7 @@ class Employees extends Component {
   return (
     <div>
       <SearchArea searchEmployee={this.searchEmployee} handleSearch={this.handleSearch}/>
-      {/* <EmployeeList employees={this.state.books} /> */}
+      <EmployeeList employees={this.state.employees} />
     </div>
   );
 }
