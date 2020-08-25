@@ -16,6 +16,9 @@ const EmployeeList = (props) => { //rendering the data from the api
                      location={employee.location.city}
                     />
                 })
+            },
+            {
+                
             }
         </div>
     )
