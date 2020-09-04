@@ -18,8 +18,8 @@ class Employees extends Component {
   componentDidMount() {
     this.fetchedEmployees()
   }
-  //api stuff 
-  fetchedEmployees = () => {
+  
+  fetchedEmployees = () => {//gettung random employees from the api  
 
 
 
@@ -34,8 +34,23 @@ class Employees extends Component {
 
   searchEmployee = (e) => {
     e.preventDefault()
-    console.log("it works");
-    //return employee.name === "" 
+    console.log("it runs");
+    
+    // create API request everytime someone types in the search input 
+    // return employee.name === "" 
+    // 1. for loop to loop through all the names 
+    // 2. Compare if each letter in string typed index[i] matches e.target.value
+    // 3. if it matches, then it should return the user cards 
+    this.setState({ searchField: e.target.value}) 
+
+    request
+    .get('https://randomuser.me/api/?results=10')
+    .query({ q: this.state.searchField })
+    .then((data) => {
+      console.log(data);
+      this.setState({ employees: [...data.body.results], initialEmployees: [...data.body.results] })
+    })
+
   }
 
   sortByFemale() {
@@ -78,9 +93,19 @@ class Employees extends Component {
     this.setState({ employees: searchMales })
   }
 
-  handleSearch = (e) => { //e refers to event 
+  handleSearch = (e) => { // 
     console.log(e.target.value)
-    this.setState({ searchField: e.target.value })
+    // this.setState({ searchField: e.target.value })
+
+    let searchedPeople = this.state.initialEmployees.filter(function (employee) {
+      console.log(employee.name.first);
+      
+      if (employee.name.first === e.target.value) {
+        this.setState({ searchedPeople: e.target.value });
+      }
+    });
+    console.log(searchedPeople);
+    this.setState({ employees: searchedPeople }); //
   }
 
   handleSort = (e) => {
@@ -100,16 +125,10 @@ class Employees extends Component {
     }
   }
 
-  // cleanData = (data) => {
-  //     const cleanedData = data.body.results.map((employee) => {
-  //         if(employee)
-  //     })
-  // }
-
   render() {
     return (
       <div>
-        <SearchArea searchEmployee={this.searchEmployee} handleSearch={this.handleSearch} handleSort={this.handleSort} />
+        <SearchArea searchEmployee={this.searchEmployee} handleSearch={this.handleSearch} handleSort={this.handleSort} searchField={this.state.searchField} />
         <EmployeeList employees={this.state.employees} />
       </div>
     );

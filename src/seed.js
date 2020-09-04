@@ -1,4 +1,0 @@
-const employeeAtttributes = [{"title": "manager", }]
-
-
-
