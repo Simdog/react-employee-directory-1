@@ -1,12 +1,18 @@
 import React from "react";
 
 
+
+
 const SearchArea = (props) => {
+
+    
+
+
     return (
         <div className="search-area">
             <form onSubmit={props.searchEmployee} action="">
-                <input onInput={props.handleSearch} type="text"/>
-                <button type="submit">Search Employee</button>
+                <input label="Search Employee" icon="search" onChange={props.handleSearch} />
+                
                 <select defaultValue="Sort" onChange={props.handleSort}>
                     <option disabled value="Sort">Sort</option>
                     <option value="Default">Default</option>

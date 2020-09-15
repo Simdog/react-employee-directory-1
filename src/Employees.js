@@ -15,11 +15,11 @@ class Employees extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount() { //renders all employees fetched from API upon page opening 
     this.fetchedEmployees()
   }
   
-  fetchedEmployees = () => {//gettung random employees from the api  
+  fetchedEmployees = () => {//getting random employees from the api  
 
 
 
@@ -95,17 +95,23 @@ class Employees extends Component {
 
   handleSearch = (e) => { // 
     console.log(e.target.value)
-    // this.setState({ searchField: e.target.value })
+  
+    console.log(this.state.initialEmployees);
+  
+    this.state.searchField = e.target.value 
 
-    let searchedPeople = this.state.initialEmployees.filter(function (employee) {
+    console.log(this.state.searchField);
+    let searchedPeople = this.state.initialEmployees.filter( (employee) => {
       console.log(employee.name.first);
-      
-      if (employee.name.first === e.target.value) {
-        this.setState({ searchedPeople: e.target.value });
+      if (employee.name.first.toLowerCase().includes(this.state.searchField.toLowerCase())){ //change to lower case
+        return employee.name.first
       }
+
     });
-    console.log(searchedPeople);
-    this.setState({ employees: searchedPeople }); //
+    
+    this.setState({ employees: searchedPeople })
+
+    //  //
   }
 
   handleSort = (e) => {
