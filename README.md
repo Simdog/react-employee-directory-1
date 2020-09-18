@@ -10,7 +10,7 @@
 
 ## Description
 
-This Application allows the user quick access to employee information, they are able to sort employees by male or female. This UI designed using react that breaks UI into components, manage component state and respond to user events. 
+By pulling random users from the RandomUser API, this application allows the user quick access to employee information, they are able to sort employees by male or female. This UI designed using react that breaks UI into components, manage component state and respond to user events. 
 
 
 ## Installation 
