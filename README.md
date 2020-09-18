@@ -37,6 +37,9 @@ npm start
 
 ## Screenshots
 
-* ![image]()
+* ![image](src/assets/default-sort.png)
+* ![image](src/assets/female-sort.png)
+* ![image](src/assets/male-sort.png)
+* ![image](src/assets/search-ee.png)
 
-* ![image]()
+
