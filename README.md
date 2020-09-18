@@ -10,7 +10,8 @@
 
 ## Description
 
-This application 
+This Application allows the user quick access to employee information, they are able to sort employees by male or female. This UI designed using react that breaks UI into components, manage component state and respond to user events. 
+
 
 ## Installation 
 
@@ -29,7 +30,10 @@ npm install
 npm start 
 ```
 
-* You may also navigate to the live app deployed on [Heroku here]() and get started! 
+* In order to filter employees by name, type a name into the search bar.
+* In order to sort the employee list by male or female, simply click the dropdown arrow called "sort" and click on the preference.
+
+* You may also navigate to the live app deployed on [Heroku here](https://blooming-journey-90486.herokuapp.com/) and get started! 
 
 ## Screenshots
 
